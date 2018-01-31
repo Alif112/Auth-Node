@@ -16,7 +16,7 @@ var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
-var bodyParser = require('body-parser');
+
 var dateFormat = require('dateformat');
 var now = new Date();
 
@@ -30,6 +30,9 @@ var configDB = require('./config/database.js');
 //configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
 
+var userinfo=require('./routes/userinfo');
+
+
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -39,7 +42,15 @@ app.use(cookieParser()); // read cookies (needed for auth)
 //app.use(bodyParser()); // get information from html forms
 
 //view engine setup
+var options = {
+  maxAge: '1d',
+};
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/userinfo', express.static(path.join(__dirname, 'public'), options));
+app.use('/userinfo/basic', express.static(path.join(__dirname, 'public'), options));
+
+
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');
 //app.set('view engine', 'ejs'); // set up ejs for templating
@@ -48,8 +59,11 @@ app.set('view engine', 'ejs');
 //required for passport
 //app.use(session({ secret: 'iloveyoudear...' })); // session secret
 
+
+
+
 app.use(session({
-    secret: 'I Love India...',
+    secret: 'secret',
     resave: true,
     saveUninitialized: true
 }));
@@ -59,7 +73,10 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 // routes ======================================================================
+app.use('/userinfo', userinfo);
+
 require('./config/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+
 
 
 //launch ========================= =============================================
