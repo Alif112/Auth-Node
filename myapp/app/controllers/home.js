@@ -17,7 +17,7 @@ exports.loggedIn = function(req, res, next) {
 
 exports.logOut = function(req, res, next) {
   console.log('logout --------mama ');
-  if (req.session) {
+  if (req.session.user) {
 
 
     req.logout();
