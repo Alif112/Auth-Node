@@ -4,6 +4,8 @@ exports.info = function(req, res, next){
   res.render('info');
 };
 
+
+
 exports.getdata = function(req, res, next){
   Products.find({},function(err,products){
     if(err) throw err;
@@ -11,6 +13,8 @@ exports.getdata = function(req, res, next){
   });
 
 };
+
+
 
 exports.createdata = function(req, res, next){
   var productname=req.body.name;
@@ -23,6 +27,8 @@ exports.createdata = function(req, res, next){
   });
   res.send({resp:'Successfully uploaded'});
 };
+
+
 
 exports.updatedata = function(req, res, next){
  var productname=req.body.newName;
@@ -43,4 +49,14 @@ Products.findOneAndUpdate(query, {
 });
 
   res.send({resp:'Successfully updated'});
+};
+
+
+
+exports.deletedata = function(req, res, next){
+  Products.remove({_id:req.params.id},function(err){
+    if(err) throw err;
+  });
+
+  res.send({resp:'Successfully deleted'});
 };

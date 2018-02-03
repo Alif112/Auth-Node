@@ -51,6 +51,8 @@ app.use('/userinfo', express.static(path.join(__dirname, 'public'), options));
 app.use('/userinfo/basic', express.static(path.join(__dirname, 'public'), options));
 app.use('/userinfo/data', express.static(path.join(__dirname, 'public'), options));
 app.use('/userinfo/update', express.static(path.join(__dirname, 'public'), options));
+app.use('/userinfo/delete', express.static(path.join(__dirname, 'public'), options));
+
 
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'ejs');

@@ -10,5 +10,7 @@ router.get('/basic',home.loggedIn,UserInfo.info);
 router.get('/getdata',home.loggedIn,UserInfo.getdata);
 router.post('/createdata',home.loggedIn,UserInfo.createdata);
 router.put('/update/:id',home.loggedIn,UserInfo.updatedata);
+router.delete('/delete/:id',home.loggedIn,UserInfo.deletedata);
+
 
 exports = module.exports =router;
