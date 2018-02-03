@@ -37,12 +37,31 @@ $(function(){
             contentType: 'application/json',
             data: JSON.stringify({ name: createInput.val() }),
             success: function(response) {
-                console.log(response);
+                console.log(response.resp);
                 createInput.val('');
                 $('#get-button').click();
             }
         });
     });
+
+    // UPDATE/PUT
+   $('table').on('click', '.update-button', function() {
+       var rowEl = $(this).closest('tr');
+       var id = rowEl.find('.id').text();
+       var newName = rowEl.find('.name').val();
+
+       $.ajax({
+           url: '/userinfo/update/' + id,
+           method: 'PUT',
+           contentType: 'application/json',
+           data: JSON.stringify({ newName: newName }),
+           success: function(response) {
+               console.log(response);
+               $('#get-button').click();
+           }
+       });
+   });
+
 
 
 
