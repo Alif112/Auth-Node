@@ -7,7 +7,9 @@ exports.info = function(req, res, next){
 
 
 exports.getdata = function(req, res, next){
-  Products.find({},function(err,products){
+  var user_id=req.user._id;
+  console.log('--------'+user_id);
+  Products.find({user_id:user_id},function(err,products){
     if(err) throw err;
     res.send({'products':products});
   });
@@ -19,7 +21,8 @@ exports.getdata = function(req, res, next){
 exports.createdata = function(req, res, next){
   var productname=req.body.name;
   var product=new Products({
-    name:productname
+    name:productname,
+    user_id:req.user._id
   });
 
   product.save(function(err,products){
@@ -39,7 +42,8 @@ exports.updatedata = function(req, res, next){
 
 Products.findOneAndUpdate(query, {
   $set: {
-    name: productname
+    name: productname,
+    user_id:req.user._id
   }
 }, {
   new: true,

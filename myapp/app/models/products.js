@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 
 var productSchema = mongoose.Schema({
-  name:String
+  name:String,
+  user_id:String
 });
 
 module.exports = mongoose.model('products', productSchema);
