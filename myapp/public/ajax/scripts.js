@@ -13,7 +13,7 @@ $(function(){
                     tbodyEl.append('\
                         <tr>\
                             <td class="id">' + product._id + '</td>\
-                            <td><input type="text" class="name" value="' + product.name + '"></td>\
+                            <td><input type="text" rows="4" cols="50" class="name" value="' + product.name + '"></td>\
                             <td>\
                                 <button class="update-button">UPDATE/PUT</button>\
                                 <button class="delete-button">DELETE</button>\
@@ -24,6 +24,7 @@ $(function(){
             }
         });
     });
+
 
     // CREATE/POST
     $('#create-form').on('submit', function(event) {

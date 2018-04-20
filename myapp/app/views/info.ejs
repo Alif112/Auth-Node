@@ -5,8 +5,8 @@
 </head>
 <body>
     <h1>AJAX API Tutorial</h1>
-    <button id="get-button">READ/GET Products</button>
-    <form id="create-form">
+    <button id="get-button" type="submit">READ/GET Products</button>
+    <form id="create-form" type="submit">
         <input type="text" id="create-input">
         <button>Create/POST</button>
     </form>
@@ -21,6 +21,11 @@
         </thead>
         <tbody></tbody>
     </table>
+
+    <script type="text/javascript">
+        $('#get-button').click();
+}
+    </script>
 
     <script src="/jquery/jQuery.js"></script>
     <script src="/ajax/scripts.js"></script>

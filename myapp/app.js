@@ -83,7 +83,7 @@ require('./config/routes.js')(app, passport); // load our routes and pass in our
 
 
 //launch ========================= =============================================
-app.listen(port);
+var server =app.listen(port,function(){});
 console.log('The magic happens on port ' + port);
 
 //catch 404 and forward to error handler
