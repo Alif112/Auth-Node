@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AJAX API Tutorial</title>
+    <title>Some AJAX request</title>
 </head>
 <body>
-    <h1>AJAX API Tutorial</h1>
-    <button id="get-button" type="submit">READ/GET Products</button>
+    <h1>Welcome to Ajax</h1>
+
+
+    <button style="display: none;" id="get-button">READ/GET Products</button>
     <form id="create-form" type="submit">
         <input type="text" id="create-input">
         <button>Create/POST</button>
@@ -22,12 +24,14 @@
         <tbody></tbody>
     </table>
 
-    <script type="text/javascript">
-        $('#get-button').click();
-}
-    </script>
+
 
     <script src="/jquery/jQuery.js"></script>
     <script src="/ajax/scripts.js"></script>
+    <script>
+        jQuery(function(){
+           jQuery('#get-button').click();
+        });
+    </script>
 </body>
 </html>
