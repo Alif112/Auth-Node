@@ -9,7 +9,7 @@ home
 
     app.get('/', home.loggedIn, home.home);//home
     app.get('/home', home.loggedIn, home.home);//home
-    app.get('/logout',home.logOut);
+    app.get('/logout',home.loggedIn,home.logOut);
 
     app.post('/signup', passport.authenticate('local-signup', {
         successRedirect: '/home', // redirect to the secure profile section
