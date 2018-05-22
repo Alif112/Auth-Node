@@ -1,10 +1,11 @@
 
-var socket=io.connect('http://localhost:8042');
+var socket=io.connect('http://10.100.94.37:8042');
 
 var message=document.getElementById('message');
 var handle=document.getElementById('handle');
 var btn=document.getElementById('send');
 var output=document.getElementById('output');
+var feedback=document.getElementById('feedback');
 
 btn.addEventListener('click',function(){
   console.log("on event listener");
@@ -17,8 +18,16 @@ btn.addEventListener('click',function(){
 });
 
 
-socket.on('chat',function(data){
-  output.innerHTML +='<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
+message.addEventListener('keypress', function(){
+    socket.emit('typing', handle.value);
+})
+
+// Listen for events
+socket.on('chat', function(data){
+    feedback.innerHTML = '';
+    output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
 });
 
-// Make connection
+socket.on('typing', function(data){
+    feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
+});
