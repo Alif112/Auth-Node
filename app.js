@@ -95,6 +95,9 @@ var server =app.listen(port,function(){});
 var io=socket(server);
 io.on('connection',function(socket){
     console.log("we are connected");
+    socket.on('chat',function(data){
+      io.sockets.emit('chat',data);
+    });
 });
 
 console.log('The magic happens on port ' + port);
