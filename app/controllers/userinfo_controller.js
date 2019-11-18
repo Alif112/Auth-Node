@@ -1,7 +1,8 @@
 var Products=require('../models/products');
 
 exports.info = function(req, res, next){
-  res.render('info');
+  var name=req.user.name;
+  res.render('info',{name:name});
 };
 
 
