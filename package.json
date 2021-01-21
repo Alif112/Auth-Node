@@ -36,7 +36,7 @@
     "request": "latest",
     "serve-favicon": "~2.3.0",
     "simple-encryptor": "latest",
-    "socket.io": "^2.1.1",
+    "socket.io": "^2.4.0",
     "underscore": "latest"
   }
 }
